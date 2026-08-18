@@ -1,0 +1,6 @@
+{
+  "name": "HOMIV - Family Lux Spa",
+  "description": "The Sanctuary of Wellness - Premium Luxury Family Spa in Nashik",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

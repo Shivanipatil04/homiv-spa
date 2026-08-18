@@ -1,0 +1,43 @@
+
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+:root {
+  --font-display: "Fourth Bold", "Alex Brush", cursive;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Custom gold gradient text utility */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF6A 50%, #C9A24B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom maroon gradient background */
+.bg-maroon-gradient {
+  background: linear-gradient(180deg, #5C0E1E 0%, #6B1023 50%, #7A1428 100%);
+}
+
+.bg-maroon-radial {
+  background: radial-gradient(circle at center, #7A1428 0%, #5C0E1E 70%, #3D0813 100%);
+}
+
+/* Gold glow effect */
+.gold-shadow {
+  box-shadow: 0 10px 30px -10px rgba(201, 162, 75, 0.25);
+}
