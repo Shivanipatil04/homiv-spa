@@ -19,7 +19,7 @@ export const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md border-[#7A1428]/15 shadow-md text-[#5C0E1E]'
-          : 'bg-[#FFFDF9]/90 backdrop-blur-sm border-[#7A1428]/10 text-[#5C0E1E]'
+          : 'bg-[#FFFDF9]/95 backdrop-blur-sm border-[#7A1428]/10 text-[#5C0E1E]'
       }`}
     >
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
@@ -64,16 +64,22 @@ export const Navbar = () => {
           </a>
         </nav>
 
-        <div className="flex items-center gap-4 sm:gap-6">
-          <div className="text-right hidden sm:block">
+        <div className="flex items-center gap-3 sm:gap-5">
+          <div className="text-right hidden xl:block">
             <p className="text-[10px] uppercase text-[#7A1428] tracking-tighter font-semibold">Book via Phone</p>
-            <a href={`tel:${siteData.phone}`} className="text-sm font-bold text-[#2D1217] hover:text-[#7A1428] transition-colors">
-              {siteData.contactPhoneLabel}
-            </a>
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#2D1217]">
+              <a href={`tel:${siteData.phone1}`} className="hover:text-[#7A1428] transition-colors">
+                {siteData.phone1}
+              </a>
+              <span className="text-[#7A1428]/40">|</span>
+              <a href={`tel:${siteData.phone2}`} className="hover:text-[#7A1428] transition-colors">
+                {siteData.phone2}
+              </a>
+            </div>
           </div>
           <a
-            href={`tel:${siteData.phone}`}
-            className="bg-[#7A1428] text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#5C0E1E] shadow-md transition-all duration-200 active:scale-95"
+            href="#contact-form"
+            className="bg-[#7A1428] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#5C0E1E] shadow-md transition-all duration-200 active:scale-95"
           >
             Book Appointment
           </a>
@@ -104,11 +110,16 @@ export const Navbar = () => {
           
           <div className="pt-4 border-t border-[#7A1428]/15 space-y-3">
             <span className="text-[10px] uppercase text-[#7A1428] tracking-widest font-bold block">Direct Call Concierge:</span>
-            <a href={`tel:${siteData.phone}`} className="flex items-center gap-2 text-sm font-bold text-[#7A1428] hover:text-[#5C0E1E]">
-              <span>📞 {siteData.contactPhoneLabel}</span>
-            </a>
+            <div className="flex flex-col gap-2">
+              <a href={`tel:${siteData.phone1}`} className="flex items-center gap-2 text-sm font-bold text-[#7A1428] hover:text-[#5C0E1E]">
+                <span>📞 {siteData.phone1}</span>
+              </a>
+              <a href={`tel:${siteData.phone2}`} className="flex items-center gap-2 text-sm font-bold text-[#7A1428] hover:text-[#5C0E1E]">
+                <span>📞 {siteData.phone2}</span>
+              </a>
+            </div>
             <a
-              href={`tel:${siteData.phone}`}
+              href="#contact-form"
               onClick={() => setMobileMenuOpen(false)}
               className="mt-2 w-full bg-[#7A1428] text-white py-2.5 rounded-lg text-center block text-xs font-bold uppercase tracking-widest hover:bg-[#5C0E1E] transition-colors"
             >

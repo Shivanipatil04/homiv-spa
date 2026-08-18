@@ -17,12 +17,16 @@ export const MembershipBanner = () => {
             Unlock exclusive session discounts, priority weekend reservations, and complimentary aromatherapy upgrades for your entire household.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href={`tel:${siteData.phone}`}
-              className="bg-[#C9A24B] text-[#2A2020] px-8 py-3.5 rounded-md font-bold uppercase text-xs tracking-widest hover:bg-[#D4AF6A] shadow-lg transition-all"
-            >
-              Inquire Membership: {siteData.contactPhoneLabel}
-            </a>
+            <div className="bg-[#C9A24B] text-[#2A2020] px-6 py-3.5 rounded-md font-bold uppercase text-xs tracking-widest shadow-lg flex items-center gap-2 flex-wrap justify-center">
+              <span>Inquire:</span>
+              <a href={`tel:${siteData.phone1}`} className="hover:underline">
+                {siteData.phone1}
+              </a>
+              <span>|</span>
+              <a href={`tel:${siteData.phone2}`} className="hover:underline">
+                {siteData.phone2}
+              </a>
+            </div>
             <a
               href="#contact-form"
               className="border border-white/40 text-white px-8 py-3.5 rounded-md font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-[#7A1428] transition-all"

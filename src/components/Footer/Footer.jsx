@@ -56,9 +56,15 @@ export const Footer = () => {
                 </div>
                 <div>
                   <span className="block text-[11px] uppercase tracking-wider text-[#D4AF6A] font-semibold">Direct Call Concierge</span>
-                  <a href={`tel:${siteData.phone}`} className="text-sm font-bold text-white hover:text-[#D4AF6A] transition-colors block">
-                    {siteData.contactPhoneLabel}
-                  </a>
+                  <div className="flex items-center gap-2 text-sm font-bold text-white">
+                    <a href={`tel:${siteData.phone1}`} className="hover:text-[#D4AF6A] transition-colors">
+                      {siteData.phone1}
+                    </a>
+                    <span className="text-[#D4AF6A]/60">|</span>
+                    <a href={`tel:${siteData.phone2}`} className="hover:text-[#D4AF6A] transition-colors">
+                      {siteData.phone2}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

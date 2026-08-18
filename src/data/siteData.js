@@ -2,7 +2,10 @@ import { images } from './images';
 
 export const siteData = {
   phone: "8169085005",
-  contactPhoneLabel: "8169085005",
+  phone1: "8169085005",
+  phone2: "8169985005",
+  phones: ["8169085005", "8169985005"],
+  contactPhoneLabel: "8169085005 / 8169985005",
   location: "Shop no 3&4, Nutan Dream, Babhai Naka, Near Mangesh Vadapav, Borivali West, Mumbai, Maharashtra, 400092",
   openingHours: "Monday – Sunday: 10:00 AM – 9:00 PM",
   
