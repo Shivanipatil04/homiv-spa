@@ -1,12 +1,12 @@
 import React from 'react';
-import { ScrollReveal } from './ScrollReveal';
-import { siteData } from '../data/siteData';
+import { ScrollReveal } from '../common/ScrollReveal';
+import { siteData } from '../../data/siteData';
 
 export const Features = () => {
   return (
     <section className="py-20 bg-white text-[#2D1217] border-b border-[#7A1428]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        
+
         <ScrollReveal className="text-center mb-14">
           <span className="text-xs font-bold tracking-widest uppercase text-[#7A1428]">
             Excellence & Perfection

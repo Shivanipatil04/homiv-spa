@@ -1,6 +1,6 @@
 import React from 'react';
-import { ScrollReveal } from '../ScrollReveal';
-import { LotusDivider } from '../LotusDivider';
+import { ScrollReveal } from '../common/ScrollReveal';
+import { LotusDivider } from '../common/LotusDivider';
 import { siteData } from '../../data/siteData';
 import { images } from '../../data/images';
 
@@ -14,7 +14,7 @@ export const About = () => {
     <section id="about" className="py-20 bg-[#FAF5EE] border-b border-[#7A1428]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
+
           <ScrollReveal className="relative">
             <div className="relative rounded-2xl overflow-hidden border-2 border-[#7A1428]/30 shadow-2xl group bg-white max-w-full">
               <img
@@ -41,7 +41,7 @@ export const About = () => {
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold mt-2 text-[#5C0E1E] leading-tight">
               {siteData.about.heading.split('HOMIV Family Lux Spa')[0]}
-              <span className="text-[#7A1428] font-display font-normal text-4xl sm:text-5xl md:text-6xl block mt-1 text-gold-gradient drop-shadow-sm">
+              <span className="text-[#7A1428] font-display font-bold text-3xl sm:text-4xl md:text-5xl block mt-2 text-gold-gradient tracking-wide drop-shadow-sm">
                 HOMIV Family Lux Spa
               </span>
             </h2>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollReveal } from '../ScrollReveal';
+import { ScrollReveal } from '../common/ScrollReveal';
 import { siteData } from '../../data/siteData';
 
 export const Contact = () => {
@@ -25,9 +25,9 @@ export const Contact = () => {
   return (
     <section id="contact-form" className="py-20 bg-[#F4ECE1] text-[#2D1217] border-b border-[#7A1428]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           <ScrollReveal className="lg:col-span-5">
             <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#7A1428] block mb-2">
               Reserve Your Experience

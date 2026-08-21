@@ -1,45 +1,84 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollReveal } from '../ScrollReveal';
+import { ScrollReveal } from '../common/ScrollReveal';
 import { siteData } from '../../data/siteData';
 import { images } from '../../data/images';
 
 export const Hero = () => {
+  const [heroSlides, setHeroSlides] = useState([]);
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
 
   useEffect(() => {
+    fetch('/api/hero')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setHeroSlides(
+            data.map((item) => ({
+              id: item._id,
+              title: item.title,
+              subtitle: item.subtitle,
+              url: item.image,
+            }))
+          );
+        } else {
+          setHeroSlides(
+            siteData.heroSlides.map((slide, idx) => ({
+              ...slide,
+              url: images.hero[idx]?.url,
+            }))
+          );
+        }
+      })
+      .catch(() => {
+        setHeroSlides(
+          siteData.heroSlides.map((slide, idx) => ({
+            ...slide,
+            url: images.hero[idx]?.url,
+          }))
+        );
+      });
+  }, []);
+
+  const totalSlides = heroSlides.length || siteData.heroSlides.length;
+
+  useEffect(() => {
+    if (totalSlides === 0) return;
     const slideInterval = setInterval(() => {
-      setCurrentHeroSlide(prev => (prev + 1) % siteData.heroSlides.length);
+      setCurrentHeroSlide((prev) => (prev + 1) % totalSlides);
     }, 4500);
     return () => clearInterval(slideInterval);
-  }, []);
+  }, [totalSlides]);
 
   const handleImageError = (e, fallback) => {
     e.target.onerror = null;
     e.target.src = fallback;
   };
 
+  const activeSlides = heroSlides.length > 0
+    ? heroSlides
+    : siteData.heroSlides.map((slide, idx) => ({ ...slide, url: images.hero[idx]?.url }));
+
   return (
     <section id="home" className="pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-8 border-b border-[#7A1428]/15 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EE] to-[#F4ECE1] overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        
+
         {/* 1. LARGE SPA IMAGE SLIDESHOW */}
         <ScrollReveal className="w-full relative">
           <div className="relative w-full h-[45vh] sm:h-[50vh] lg:h-[500px] min-h-[280px] rounded-2xl overflow-hidden border-2 border-[#C9A24B]/40 shadow-2xl bg-gray-900 group">
-            {siteData.heroSlides.map((slide, idx) => (
+            {activeSlides.map((slide, idx) => (
               <div
                 key={slide.id}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                  idx === currentHeroSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-                }`}
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === currentHeroSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                  }`}
               >
                 <img
-                  src={images.hero[idx]?.url}
+                  src={slide.url}
                   alt={slide.title}
                   className="w-full h-full object-cover object-center block max-w-full"
                   loading={idx === 0 ? 'eager' : 'lazy'}
                   onError={(e) => handleImageError(e, images.about.main)}
                 />
-                
+
                 {/* Subtle caption pill at bottom left */}
                 <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-white text-xs sm:text-sm font-medium">
                   <span className="font-serif text-[#F3E5AB] font-bold mr-1.5">HOMIV</span>
@@ -50,14 +89,14 @@ export const Hero = () => {
 
             {/* Manual Navigation Arrows */}
             <button
-              onClick={() => setCurrentHeroSlide(prev => (prev - 1 + siteData.heroSlides.length) % siteData.heroSlides.length)}
+              onClick={() => setCurrentHeroSlide(prev => (prev - 1 + activeSlides.length) % activeSlides.length)}
               className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-[#7A1428] text-white border border-white/30 flex items-center justify-center transition-all focus:outline-none active:scale-95 text-xl font-bold"
               aria-label="Previous Slide"
             >
               ‹
             </button>
             <button
-              onClick={() => setCurrentHeroSlide(prev => (prev + 1) % siteData.heroSlides.length)}
+              onClick={() => setCurrentHeroSlide(prev => (prev + 1) % activeSlides.length)}
               className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-[#7A1428] text-white border border-white/30 flex items-center justify-center transition-all focus:outline-none active:scale-95 text-xl font-bold"
               aria-label="Next Slide"
             >
@@ -67,13 +106,12 @@ export const Hero = () => {
 
           {/* 2. SLIDESHOW INDICATORS / PAGINATION */}
           <div className="flex items-center justify-center gap-2 mt-4 mb-8">
-            {siteData.heroSlides.map((_, idx) => (
+            {activeSlides.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentHeroSlide(idx)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  idx === currentHeroSlide ? 'w-8 bg-[#7A1428]' : 'w-2.5 bg-[#7A1428]/30 hover:bg-[#7A1428]/60'
-                }`}
+                className={`h-2.5 rounded-full transition-all duration-300 ${idx === currentHeroSlide ? 'w-8 bg-[#7A1428]' : 'w-2.5 bg-[#7A1428]/30 hover:bg-[#7A1428]/60'
+                  }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}
@@ -91,7 +129,7 @@ export const Hero = () => {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight font-bold text-[#5C0E1E] mb-4">
             Welcome to <br />
-            <span className="text-[#7A1428] font-display font-normal text-4xl sm:text-5xl md:text-6xl text-gold-gradient block mt-1">
+            <span className="text-[#7A1428] font-display font-bold text-3xl sm:text-4xl md:text-5xl text-gold-gradient block mt-2 tracking-wide">
               HOMIV Family Lux Spa
             </span>
           </h1>

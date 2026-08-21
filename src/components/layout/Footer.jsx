@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollReveal } from '../ScrollReveal';
+import { ScrollReveal } from '../common/ScrollReveal';
 import { siteData } from '../../data/siteData';
 import { images } from '../../data/images';
 

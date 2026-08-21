@@ -1,6 +1,6 @@
 import React from 'react';
-import { ScrollReveal } from './ScrollReveal';
-import { siteData } from '../data/siteData';
+import { ScrollReveal } from '../common/ScrollReveal';
+import { siteData } from '../../data/siteData';
 
 export const MembershipBanner = () => {
   return (

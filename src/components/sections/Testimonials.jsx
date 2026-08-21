@@ -1,6 +1,6 @@
 import React from 'react';
-import { ScrollReveal } from '../ScrollReveal';
-import { LotusDivider } from '../LotusDivider';
+import { ScrollReveal } from '../common/ScrollReveal';
+import { LotusDivider } from '../common/LotusDivider';
 import { siteData } from '../../data/siteData';
 
 export const Testimonials = () => {
